@@ -72,6 +72,8 @@ public class UIPlateController : MonoBehaviour
             gbTextPlate.SetActive(false);
             gbBackground.SetActive(false);
 
+            showPlateInfo = false;
+
             plate = null;
         }
     }

@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     private UIPlateController uiPlateController;
     private UIKeyController uiKeyController;
 
-    private const int TOTAL_JUMP = 10;
+    private const int TOTAL_JUMP = 1;
     public int quantJump = 0;
 
     // Start is called before the first frame update
@@ -81,17 +81,17 @@ public class Player : MonoBehaviour
         {
             rbPlayer.velocity = Vector2.zero;
             rbPlayer.AddForce(new Vector2(0, speedJump), ForceMode2D.Impulse);
-            aniPlayer.SetBool("Jump", true);
+            aniPlayer.SetTrigger("InitJumpTrigger");
             quantJump++;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Ground")
+        if (collision.gameObject.name == "Ground" && quantJump != 0)
         {
             quantJump = 0;
-            aniPlayer.SetBool("Jump", false);
+            aniPlayer.SetTrigger("EndJumpTrigger");
         }
     }
 
@@ -102,6 +102,7 @@ public class Player : MonoBehaviour
             rbPlayer.velocity = Vector2.zero;
             rbPlayer.AddForce(new Vector2(0, speedJump), ForceMode2D.Impulse);
             collider.gameObject.GetComponent<SpriteRenderer>().flipY = true;
+            collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             collider.gameObject.GetComponent<Enemy>().enabled = false;
             collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             Destroy(collider.gameObject, 2f);
@@ -139,12 +140,12 @@ public class Player : MonoBehaviour
 
         if (horizontalMovement > 0)
         {
-            aniPlayer.SetBool("Walk", true);
+            aniPlayer.SetBool("Walk", quantJump == 0);
             sprite.flipX = false;
         }
         else if (horizontalMovement < 0)
         {
-            aniPlayer.SetBool("Walk", true);
+            aniPlayer.SetBool("Walk", quantJump == 0);
             sprite.flipX = true;
         }
         else

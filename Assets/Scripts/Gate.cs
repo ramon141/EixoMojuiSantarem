@@ -38,7 +38,7 @@ public class Gate : MonoBehaviour
         }
         else
         {
-
+			isOpen = true;
         }
     }
 

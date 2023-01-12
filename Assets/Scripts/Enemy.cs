@@ -20,39 +20,48 @@ public class Enemy : MonoBehaviour
 
     public bool isSkipable = false;
 
+	public bool inverseSprite = false;
+
     public bool isJumping = false;
+
+	private float framesSinceLastInverse = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         rbEnemy = GetComponent<Rigidbody2D>();
+	
+		
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!isJumping)
+	void Update(){
+
+
+		if (!isJumping)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
 
             groundRight = Physics2D.Linecast(groundCheckRight.position, transform.position, groundLayer);
             groundLeft = Physics2D.Linecast(groundCheckLeft.position, transform.position, groundLayer);
 
-            if (groundRight == false || groundLeft == false)
+			float now = Time.time;
+            if ((groundRight == false || groundLeft == false) && (now - framesSinceLastInverse) > 0.5)
             {
+				framesSinceLastInverse = now;
                 speed *= -1;
             }
         }
 
         jump();
         flipIfNeed(speed);
-    }
+	}
 
     void flipIfNeed(float speed)
     {
         Vector3 scale = transform.localScale;
-        sprite.flipX = speed > 0;
+        sprite.flipX = inverseSprite? speed < 0 : speed > 0;
     }
 
     void jump()

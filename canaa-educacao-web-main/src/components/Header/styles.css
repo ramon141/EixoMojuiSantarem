@@ -1,0 +1,45 @@
+.header-pages {
+    display: flex;
+    align-items: center;
+    
+}
+
+.header-pages .name-user {
+    font-size: 16px;
+    display: block;
+    color: #000000e5;
+}
+
+.header-pages .type-user {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #000000;
+}
+
+.header-pages img {
+    height: 55px;
+    margin-left: 40px;
+    margin-top: 0;
+    margin-left: auto;
+}
+
+/*.header-pages a {
+    width: 100px;
+    margin-top: 0;
+    margin-left: auto;
+}*/
+
+.header-pages button {
+    height: 50px;
+    width: 50px;
+    border: 0px solid #FBCC08;
+    background: #FBCC08;
+    background: #FBCC08;
+    margin-left: 16px;
+    transition: border-color 0.2s;
+}
+
+.header-pages button:hover {
+    border-color: #999;
+    filter: brightness(90%);
+}
