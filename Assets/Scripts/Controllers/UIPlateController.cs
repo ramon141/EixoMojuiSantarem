@@ -12,6 +12,11 @@ public class UIPlateController : MonoBehaviour
     //Singleton
     public static UIPlateController uipc;
 
+    private float delay = 0.05f;
+    private string fullText;
+    private string currentText = "";
+
+
     public GameObject gbTextPlate;
     public GameObject gbBackground;
 
@@ -34,20 +39,23 @@ public class UIPlateController : MonoBehaviour
 
         if (input > 0) showPlateInfo = true;
 
-        if (showPlateInfo && plate != null)
+        if (showPlateInfo && plate != null && !gbTextPlate.activeSelf)
         {
-            //Ativa e altera o texto
-            gbTextPlate.GetComponent<TextMeshProUGUI>().text = plate.GetComponent<Text>().text;
             gbTextPlate.SetActive(true);
 
             //Ativa o fundo
             gbBackground.SetActive(true);
+
+            //Ativa e altera o texto
+            fullText = plate.GetComponent<Text>().text;
+            currentText = "";
+            StartCoroutine(ShowText());
         }
 
         if (cancel > 0)
         {
+            currentText = "";
             //Ativa e altera o texto
-            gbTextPlate.GetComponent<TextMeshProUGUI>().text = plate.GetComponent<Text>().text;
             gbTextPlate.SetActive(false);
 
             //Ativa o fundo
@@ -57,16 +65,31 @@ public class UIPlateController : MonoBehaviour
         }
     }
 
+
+    private IEnumerator ShowText()
+    {
+        for (int i = 0; i < fullText.Length && gbTextPlate.activeSelf; i++)
+        {
+            currentText = fullText.Substring(0, i);
+            gbTextPlate.GetComponent<TextMeshProUGUI>().text = currentText;
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
+
+
     public void onEnterInPlate(GameObject plateLocal)
     {
         plateLocal.transform.Find("Question").GetComponent<SpriteRenderer>().enabled = true;
         plate = plateLocal;
+        currentText = "";
     }
 
     public void onExidInPlate(GameObject plateLocal)
     {
         if (plate != null)
         {
+            currentText = "";
             plate.transform.Find("Question").GetComponent<SpriteRenderer>().enabled = false;
 
             gbTextPlate.SetActive(false);

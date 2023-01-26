@@ -29,6 +29,9 @@ public class Gate : MonoBehaviour
                 if (UIKeyController.uikc.removeKey(typeKey))
                 {
                     SceneManager.LoadScene(toScene);
+
+                    PlayerPrefs.SetInt("level", UIScoreController.uisc.level);
+                    PlayerPrefs.SetInt("score", UIScoreController.uisc.score);
                 }
                 else
                 {
@@ -38,7 +41,7 @@ public class Gate : MonoBehaviour
         }
         else
         {
-			isOpen = true;
+            isOpen = true;
         }
     }
 

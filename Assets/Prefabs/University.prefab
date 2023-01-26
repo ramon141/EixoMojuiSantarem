@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8338517815702646839}
   - component: {fileID: 8338517815702646834}
   m_Layer: 0
-  m_Name: IconPlate
+  m_Name: IconHouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 8338517815702646840}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.028323106}
-  m_LocalScale: {x: 0.1097012, y: 0.1097012, z: 0.1097012}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8338517816776697351}
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 635dbe794f2626e509eb9996b289eceb, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 951ae5273099cdd44a9a5c8c3765c324, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 8338517816776697349}
   - component: {fileID: 8338517816776697348}
   m_Layer: 0
-  m_Name: Plate
+  m_Name: University
   m_TagString: Plate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,9 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ol\xE1 Jhonicley, bem vindo de volta a Moju\xED dos Campos.\nA sua primeira
-    terefa \xE9 encontrar a chave perdida, que permite o acesso ao caminho para Santar\xE9m.\n\nSiga
-    em frente e boa sorte!"
+  m_Text: Mensagem
 --- !u!61 &8338517816776697348
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -196,7 +194,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.7903326, y: 1.2080295}
+  m_Offset: {x: 0.78, y: -2.85}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -207,7 +205,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.91933477, y: 0.9760592}
+  m_Size: {x: 1.5144653, y: 2.152954}
   m_EdgeRadius: 0
 --- !u!1 &8338517817043521415
 GameObject:
@@ -234,7 +232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8338517817043521415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.743, y: 2.16, z: -0.028323106}
+  m_LocalPosition: {x: 0.743, y: 3.7, z: -0.028323106}
   m_LocalScale: {x: 0.295244, y: 0.295244, z: 0.295244}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -281,7 +279,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f81bccf553c636742b18df4e69df1d12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

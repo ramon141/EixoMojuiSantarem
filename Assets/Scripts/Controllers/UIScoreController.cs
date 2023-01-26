@@ -18,8 +18,8 @@ public class UIScoreController : MonoBehaviour
 
     private const float MAX_WIDTH_SCORE = 250.98f;
 
-    private int score = 0;
-    private int level = 1;
+    public int score = 0;
+    public int level = 1;
 
     //Quantidade de Score necessário para passar para o próximo nível
     private static int[] scoreNeedToNextLevel = new int[7] {
@@ -38,6 +38,10 @@ public class UIScoreController : MonoBehaviour
             uisc = this;
         else if (uisc != this)
             Destroy(gameObject);
+
+
+        score = PlayerPrefs.GetInt("score", 0);
+        level = PlayerPrefs.GetInt("level", 1);
     }
 
     public void addScore(int scr)

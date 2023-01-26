@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     private const int TOTAL_JUMP = 1;
     public int quantJump = 0;
 
+    private bool isAlive = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -101,13 +103,27 @@ public class Player : MonoBehaviour
         {
             rbPlayer.velocity = Vector2.zero;
             rbPlayer.AddForce(new Vector2(0, speedJump), ForceMode2D.Impulse);
-            collider.gameObject.GetComponent<SpriteRenderer>().flipY = true;
-            collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            collider.gameObject.GetComponent<Enemy>().enabled = false;
-            collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            Destroy(collider.gameObject, 2f);
 
-            uiScoreController.addScore(ENEMIES_POINTS[collider.gameObject.tag]);
+            if (collider.gameObject.GetComponent<Enemy>().hp == 1)
+            {
+                collider.gameObject.GetComponent<SpriteRenderer>().flipY = true;
+                collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                collider.gameObject.GetComponent<Enemy>().enabled = false;
+                collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                Destroy(collider.gameObject, 2f);
+
+                if (collider.gameObject.GetComponent<Enemy>().onKill != null)
+                {
+                    collider.gameObject.GetComponent<Enemy>().onKill.SetActive(true);
+                }
+
+
+                uiScoreController.addScore(ENEMIES_POINTS[collider.gameObject.tag]);
+            }
+            else
+            {
+                collider.gameObject.GetComponent<Enemy>().hp--;
+            }
 
         }
         else if (collider.gameObject.tag == "Plate")
